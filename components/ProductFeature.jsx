@@ -2,17 +2,18 @@ import { storyblokEditable } from "@storyblok/react";
 
 const ProductFeature = ({ blok }) => {
 	return (
-		<div className="mt-40" {...storyblokEditable(blok)}>
-			<h2 className="text-8xl text-center mb-10">{blok.headline}</h2>
-			<div
-				style={{
-					background: `url(${blok?.product?.items[0]?.image}) no-repeat center center/cover`,
-					height: 600,
-					width: "100%",
-					borderRadius: 12
-				}}
+		<div style={{ marginTop: "10rem" }} {...storyblokEditable(blok)}>
+			<h2 style={{ fontSize: 24 }} className="text-center">
+				{blok.headline}
+			</h2>
+
+			<img
+				alt={blok.headline}
+				src={blok?.product?.items[0]?.image}
+				style={{ margin: "20px auto", objectFit: "cover" }}
 			/>
-			<h3 className="text-xl text-right">
+
+			<h3 style={{ fontSize: 20, marginTop: 8 }} className="text-center">
 				{blok?.product?.items[0]?.description}
 			</h3>
 		</div>
@@ -20,3 +21,4 @@ const ProductFeature = ({ blok }) => {
 };
 
 export default ProductFeature;
+
