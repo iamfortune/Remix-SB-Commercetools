@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.sb-section {
+	max-width: 90%;
+	margin: 2rem auto;
+	overflow: hidden;
+}
+
+button {
+	display: block;
+	background: #03b3b0;
+	color: #fff;
+	height: 45px;
+	padding: 0 1.5rem;
+	border-radius: 6px;
+}
+
+.sb-hero h2 {
+	font-size: 32px;
+	line-height: 27px;
+}
+
+.sb-hero p {
+	line-height: 26px;
+}
+
+.sb-hero img {
+	display: block;
+	width: 100%;
+}
+
+.sb-product-grid {
+	margin-top: 10rem;
+}
+
+.sb-product-grid .img-wrapper {
+	width: 320px;
+}
+
+.sb-product-grid img {
+	width: 100%;
+	height: 240px;
+	object-fit: cover;
+	border-radius: 8px;
+}
