@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
 	padding: 0;
 	margin: 0;
@@ -41,8 +37,19 @@ button {
 	margin-top: 10rem;
 }
 
+.sb-product-grid h1 {
+	font-size: 48px;
+	margin-bottom: 24px;
+}
+
+.sb-product-grid h4 {
+	margin: 4px 0;
+}
+
 .sb-product-grid .img-wrapper {
 	width: 320px;
+	margin-right: 32px;
+	margin-bottom: 32px;
 }
 
 .sb-product-grid img {
@@ -51,3 +58,11 @@ button {
 	object-fit: cover;
 	border-radius: 8px;
 }
+
+.text-center {
+	text-align: center;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -9,7 +9,6 @@ const Hero = ({ blok }) => {
 			</div>
 
 			<img
-				{...storyblokEditable(blok)}
 				src={blok?.image?.filename}
 				alt={blok?.image?.name}
 			/>
