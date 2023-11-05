@@ -1,28 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { json } from "@remix-run/node";
-import {
-	useStoryblokState,
-	getStoryblokApi,
-	storyblokEditable,
-} from "@storyblok/react";
 import { Link, useLoaderData } from "@remix-run/react";
+import { client } from "../commercetools";
 
 export const loader = async (req) => {
-	const storyblokApi = getStoryblokApi();
+	const id = req.params.slug;
 
-  const id = req.params.slug ?? "jujutsu-kaisen";
-
-	const { data } = await storyblokApi.get(`cdn/stories/product/${id}`, {
-		version: "draft",
+	const res = await client.execute({
+		uri: `/${process.env.REACT_APP_CT_PROJECT_KEY}/products/${id}`,
+		method: "GET",
 	});
 
-	return json(data?.story);
+	return json(res.body);
 };
 
 const ProductDetails = () => {
 	let product = useLoaderData();
 
-	product = useStoryblokState(product);
+	const image = product?.masterData?.current?.masterVariant?.images[0]?.url;
+	const name = product?.masterData?.current?.name["en-US"];
+	const description = product?.masterData?.current?.description["en-US"];
+	const price =
+		product?.masterData?.current?.masterVariant?.prices[0]?.value?.centAmount /
+		100;
 
 	return (
 		<section className="sb-section">
@@ -30,22 +30,17 @@ const ProductDetails = () => {
 				<h3 className="text-black text-3xl">Go Back</h3>
 			</Link>
 
-			<main
-				className="!mt-20 flex items-center justify-center"
-				{...storyblokEditable(product?.content)}
-			>
+			<main className="!mt-20 flex items-center justify-center">
 				<img
-					src={product?.content?.images[0]?.filename}
-					alt={product?.content?.images[0]?.alt}
-					style={{ width: 240, height: 320 }}
+					alt={name}
+					src={image}
 					className="object-cover"
+					style={{ width: 240, height: 320 }}
 				/>
 				<div className="ml-10">
-					<h2 className="text-2xl font-bold mb-1">{product?.content?.name}</h2>
-					<p>{product?.content?.description}</p>
-					<h2 className="text-2xl font-bold mt-10 mb-4">
-						${product?.content?.price}
-					</h2>
+					<h2 className="text-2xl font-bold mb-1">{name}</h2>
+					<p>{description}</p>
+					<h2 className="text-2xl font-bold mt-10 mb-4">${price}</h2>
 					<button>Order now</button>
 				</div>
 			</main>
