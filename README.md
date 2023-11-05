@@ -1,3 +1,5 @@
+A Remix ecommerce app with Storyblok and commercetools 
+
 # Welcome to Remix!
 
 - [Remix Docs](https://remix.run/docs)

@@ -37,7 +37,7 @@ const FetchProducts = () => {
 	return (
 		<section className="sb-section">
 			<Link to="/">
-				<h3 className="text-black text-3xl">Anime Store</h3>
+				<h3 className="text-black text-3xl">Kara Store</h3>
 			</Link>
 
 			<main className="!mt-20">
